@@ -182,7 +182,7 @@ function ReactStars(props) {
         }
     }
 
-    function onClick(event) {
+    function onClickHandler(event) {
         if (!config.edit) return;
 
         var index = Number(event.currentTarget.getAttribute('data-index'));
@@ -197,6 +197,7 @@ function ReactStars(props) {
             value = index = index + 1;
         }
 
+        props.onClick(value);
         currentValueUpdated(value);
     }
 
@@ -251,7 +252,7 @@ function ReactStars(props) {
                 config: config,
                 onMouseOver: mouseOver,
                 onMouseLeave: mouseLeave,
-                onClick: onClick,
+                onClick: onClickHandler,
                 halfStarHidden: halfStarHidden,
                 halfStarAt: halfStarAt,
                 isUsingIcons: isUsingIcons,
@@ -309,6 +310,7 @@ ReactStars.defaultProps = {
     activeColor: '#ffd700',
     a11y: true,
 
+    onClick: function onClick() {},
     onChange: function onChange() {}
 };
 
